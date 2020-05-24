@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="q256.optimizer.OptimizerForm">
+  <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="1303" height="779"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="3bcad" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
+          <text value="Talisman Optimizer by q256" noi18n="true"/>
+        </properties>
+      </component>
+      <tabbedpane id="24753" binding="optimizerTab">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="1000" height="600"/>
+          </grid>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <grid id="9d102" layout-manager="GridLayoutManager" row-count="5" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="50" left="50" bottom="50" right="50"/>
+            <constraints>
+              <tabbedpane title="Optimizer"/>
+            </constraints>
+            <properties>
+              <minimumSize width="-1" height="-1"/>
+              <preferredSize width="-1" height="-1"/>
+            </properties>
+            <border type="none" title=""/>
+            <children>
+              <grid id="cc8f1" binding="talisNumbers" layout-manager="GridLayoutManager" row-count="7" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="250" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="2f2cc" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="175" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font size="20"/>
+                      <foreground color="-8355712"/>
+                      <labelFor value="5a1fe"/>
+                      <text value="Common" noi18n="true"/>
+                    </properties>
+                  </component>
+                  <component id="5a1fe" class="javax.swing.JSpinner" binding="commonCount">
+                    <constraints>
+                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="40" height="-1"/>
+                        <maximum-size width="40" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="1a5d2" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="175" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font size="20"/>
+                      <foreground color="-16724425"/>
+                      <labelFor value="d3c5"/>
+                      <text value="Uncommon" noi18n="true"/>
+                    </properties>
+                  </component>
+                  <component id="d3c5" class="javax.swing.JSpinner" binding="uncommonCount">
+                    <constraints>
+                      <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="40" height="-1"/>
+                        <maximum-size width="40" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="cd115" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="175" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font size="20"/>
+                      <foreground color="-16764161"/>
+                      <labelFor value="fd49a"/>
+                      <text value="Rare" noi18n="true"/>
+                    </properties>
+                  </component>
+                  <component id="fd49a" class="javax.swing.JSpinner" binding="rareCount">
+                    <constraints>
+                      <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="40" height="-1"/>
+                        <maximum-size width="40" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="94146" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="175" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font size="20"/>
+                      <foreground color="-6946616"/>
+                      <labelFor value="423c2"/>
+                      <text value="Epic" noi18n="true"/>
+                    </properties>
+                  </component>
+                  <component id="423c2" class="javax.swing.JSpinner" binding="epicCount">
+                    <constraints>
+                      <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="40" height="-1"/>
+                        <maximum-size width="40" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="2bba5" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="175" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font size="20"/>
+                      <foreground color="-14336"/>
+                      <labelFor value="3bee1"/>
+                      <text value="Legendary" noi18n="true"/>
+                    </properties>
+                  </component>
+                  <component id="3bee1" class="javax.swing.JSpinner" binding="legendaryCount">
+                    <constraints>
+                      <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="40" height="-1"/>
+                        <maximum-size width="40" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="32f8d" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="175" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font size="20"/>
+                      <foreground color="-1083409"/>
+                      <labelFor value="c17d7"/>
+                      <text value="Mythic" noi18n="true"/>
+                    </properties>
+                  </component>
+                  <component id="c17d7" class="javax.swing.JSpinner" binding="mythicCount">
+                    <constraints>
+                      <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="40" height="-1"/>
+                        <maximum-size width="40" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="bb8ce" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <enabled value="true"/>
+                      <font size="24"/>
+                      <text value="Number of Talismans"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <component id="9e9af" class="javax.swing.JTable" binding="talisTable">
+                <constraints>
+                  <grid row="0" column="2" row-span="1" col-span="2" vsize-policy="2" hsize-policy="6" anchor="0" fill="3" indent="2" use-parent-layout="false">
+                    <preferred-size width="150" height="50"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <autoCreateRowSorter value="false"/>
+                </properties>
+              </component>
+              <grid id="32c00" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="c4e33" class="javax.swing.JButton" binding="calculateButton" default-binding="true">
+                    <constraints>
+                      <grid row="0" column="0" row-span="5" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="0" indent="1" use-parent-layout="false">
+                        <preferred-size width="200" height="60"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font size="24"/>
+                      <text value="Calculate"/>
+                    </properties>
+                  </component>
+                  <component id="68007" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font size="16"/>
+                      <labelFor value="75e99"/>
+                      <text value="Stat boost (%)"/>
+                    </properties>
+                  </component>
+                  <component id="75e99" class="javax.swing.JSpinner" binding="statBoost">
+                    <constraints>
+                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="77d93" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font size="16"/>
+                      <labelFor value="53a9d"/>
+                      <text value="Attack Speed Mult"/>
+                    </properties>
+                  </component>
+                  <component id="53a9d" class="javax.swing.JSpinner" binding="atsMult">
+                    <constraints>
+                      <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="b5de0" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font size="16"/>
+                      <labelFor value="53a9d"/>
+                      <text value="Mastiff"/>
+                    </properties>
+                  </component>
+                  <component id="5326a" class="javax.swing.JCheckBox" binding="usingMastiff">
+                    <constraints>
+                      <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                  <component id="76edf" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font size="16"/>
+                      <labelFor value="53a9d"/>
+                      <text value="Shaman/Pooch"/>
+                    </properties>
+                  </component>
+                  <component id="a45dc" class="javax.swing.JCheckBox" binding="usingShaman">
+                    <constraints>
+                      <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                  <vspacer id="6042">
+                    <constraints>
+                      <grid row="4" column="1" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </vspacer>
+                </children>
+              </grid>
+              <vspacer id="6a2d">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="1" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                    <preferred-size width="-1" height="30"/>
+                    <maximum-size width="-1" height="30"/>
+                  </grid>
+                </constraints>
+              </vspacer>
+              <component id="37c3b" class="javax.swing.JEditorPane" binding="console">
+                <constraints>
+                  <grid row="2" column="3" row-span="2" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="50"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <editable value="false"/>
+                </properties>
+              </component>
+              <vspacer id="c55de">
+                <constraints>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <grid id="290d7" binding="stats" layout-manager="GridLayoutManager" row-count="5" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="2" column="1" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="250" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="491ce" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="175" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font size="20"/>
+                      <foreground color="-4473925"/>
+                      <labelFor value="edde8"/>
+                      <text value="Weapon Damage" noi18n="true"/>
+                    </properties>
+                  </component>
+                  <component id="edde8" class="javax.swing.JSpinner" binding="weaponDmg">
+                    <constraints>
+                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="40" height="-1"/>
+                        <maximum-size width="40" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="3b543" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="175" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font size="20"/>
+                      <foreground color="-4473925"/>
+                      <labelFor value="dc6af"/>
+                      <text value="Strength" noi18n="true"/>
+                    </properties>
+                  </component>
+                  <component id="dc6af" class="javax.swing.JSpinner" binding="str">
+                    <constraints>
+                      <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="40" height="-1"/>
+                        <maximum-size width="40" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="974af" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="175" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font size="20"/>
+                      <foreground color="-4473925"/>
+                      <labelFor value="22350"/>
+                      <text value="Crit Damage" noi18n="true"/>
+                    </properties>
+                  </component>
+                  <component id="22350" class="javax.swing.JSpinner" binding="cd">
+                    <constraints>
+                      <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="40" height="-1"/>
+                        <maximum-size width="40" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="2552f" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="175" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font size="20"/>
+                      <foreground color="-4473925"/>
+                      <labelFor value="c64b"/>
+                      <text value="Attack Speed" noi18n="true"/>
+                    </properties>
+                  </component>
+                  <component id="c64b" class="javax.swing.JSpinner" binding="ats">
+                    <constraints>
+                      <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="40" height="-1"/>
+                        <maximum-size width="40" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="ead6c" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <enabled value="true"/>
+                      <font size="24"/>
+                      <text value="Stats Without Talismans"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+            </children>
+          </grid>
+        </children>
+      </tabbedpane>
+    </children>
+  </grid>
+</form>

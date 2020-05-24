@@ -35,6 +35,7 @@ public class Main
 
 	public Main()
 	{
+
 		generateReforgeStats();
 
 		configManager = new ConfigManager();
@@ -87,7 +88,7 @@ public class Main
 		}
 	}
 
-	void generateReforgeStats()
+	private void generateReforgeStats()
 	{
 		//str, cd, atc spd, def, health, speed, int
 		for (int ii = 0; ii < 6; ii++)
@@ -413,6 +414,7 @@ public class Main
 			createCheckBoxes();
 		}
 
+		@Override
 		public void paintComponent(Graphics g)
 		{
 			Graphics2D g2d = (Graphics2D) g;
