@@ -21,10 +21,11 @@ public class PlayerStats
 	public final boolean hasShaman;
 	public final int[] numberOfTalismans;
 	public final double baseSpd;
+	public final double atsMult;
 
 	private PlayerStats(double baseStr, double baseCd, double baseAts, double baseCc, double baseDef, double baseHp,
 			double baseInt, double baseMf, double basePl, double baseSpd, double statMultiplier, double baseDmg,
-			int[][] currentReforges, boolean hasMastiff, boolean hasShaman, int[] numberOfTalismans)
+			int[][] currentReforges, boolean hasMastiff, boolean hasShaman, int[] numberOfTalismans, double atsMult)
 	{
 		this.baseStr = baseStr;
 		this.baseCd = baseCd;
@@ -42,20 +43,21 @@ public class PlayerStats
 		this.hasMastiff = hasMastiff;
 		this.hasShaman = hasShaman;
 		this.numberOfTalismans = numberOfTalismans;
+		this.atsMult = atsMult;
 	}
 
 	public static PlayerStats fromDmgStatsOnly(double baseStr, double baseCd, double baseAts, double statMultiplier,
-			double baseDmg, boolean hasMastiff, boolean hasShaman, int[] numberOfTalismans)
+			double baseDmg, double atsMult, boolean hasMastiff, boolean hasShaman, int[] numberOfTalismans)
 	{
 		return new PlayerStats(baseStr, baseCd, baseAts, 0, 0, 0, 0, 0, 0, 0, statMultiplier, baseDmg,
 				new int[][] { new int[6], new int[6], new int[6], new int[6], new int[6], new int[6] }, hasMastiff,
-				hasShaman, numberOfTalismans);
+				hasShaman, numberOfTalismans, atsMult);
 	}
 
 	public static PlayerStats fromStatsOnly(double baseStr, double baseCd, double baseAts, double baseCc,
 			double baseDef, double baseHp, double baseInt, double baseMf, double basePl, double baseSpd)
 	{
 		return new PlayerStats(baseStr, baseCd, baseAts, baseCc, baseDef, baseHp, baseInt, baseMf, basePl, baseSpd, 0,
-				0, null, false, false, null);
+				0, null, false, false, null, 0);
 	}
 }

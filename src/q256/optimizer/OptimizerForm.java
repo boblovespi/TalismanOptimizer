@@ -85,8 +85,8 @@ public class OptimizerForm
 			PlayerStats stats = PlayerStats
 					.fromDmgStatsOnly((int) str.getValue() / (statMult + 1), (int) cd.getValue() / (statMult + 1),
 							(int) ats.getValue() / (statMult + 1), statMult, (int) weaponDmg.getValue() + 5,
-							usingMastiff.isSelected(), usingShaman.isSelected(), getNumOfTalis());
-			Calculator calculator = new Q256Calculator(stats);
+							(int) atsMult.getValue(), usingMastiff.isSelected(), usingShaman.isSelected(),
+							getNumOfTalis()); Calculator calculator = new Q256Calculator(stats);
 			calcThread = new CalculationThread(calculator);
 			calcThread.onFinish(this::displayStats);
 			calcThread.run();

@@ -44,15 +44,15 @@ public abstract class Calculator
 			{
 				if (tempReforges[ii][jj] != 0)
 				{
-					str += tempReforges[ii][jj] * reforgeStats[jj][0][ii];
-					cd += tempReforges[ii][jj] * reforgeStats[jj][1][ii];
-					atcSpd += tempReforges[ii][jj] * reforgeStats[jj][2][ii];
+					str += tempReforges[ii][jj] * reforgeStats[jj][0][ii] * (1 + stats.statMultiplier);
+					cd += tempReforges[ii][jj] * reforgeStats[jj][1][ii] * (1 + stats.statMultiplier);
+					atcSpd += tempReforges[ii][jj] * reforgeStats[jj][2][ii] * (1 + stats.statMultiplier);
 				}
 			}
 		}
-		str *= 1 + stats.statMultiplier;
-		cd *= 1 + stats.statMultiplier;
-		atcSpd *= 1 + stats.statMultiplier;
+		// str *= 1 + stats.statMultiplier;
+		// cd *= 1 + stats.statMultiplier;
+		// atcSpd *= 1 + stats.statMultiplier;
 		double damage = calcDamage(str, cd);
 		double DPS = calcDPS(str, cd, atcSpd);
 		if (DPS > bestDPS)
@@ -83,7 +83,7 @@ public abstract class Calculator
 	// calculates dps based on str, cd, and ats
 	protected double calcDPS(double str, double cd, double atcSpd)
 	{
-		return (calcDamage(str, cd) * (2 + atcSpd * stats.baseAts / 50));
+		return (calcDamage(str, cd) * (2 + atcSpd * stats.atsMult / 50));
 	}
 
 	public void startStopwatch()
@@ -124,13 +124,13 @@ public abstract class Calculator
 		{
 			for (int jj = 0; jj < 6; jj++)
 			{
-				str += bestReforges[ii][jj] * reforgeStats[jj][0][ii];
-				cd += bestReforges[ii][jj] * reforgeStats[jj][1][ii];
-				ac += bestReforges[ii][jj] * reforgeStats[jj][2][ii];
-				def += bestReforges[ii][jj] * reforgeStats[jj][3][ii];
-				hp += bestReforges[ii][jj] * reforgeStats[jj][4][ii];
-				spd += bestReforges[ii][jj] * reforgeStats[jj][5][ii];
-				intel += bestReforges[ii][jj] * reforgeStats[jj][6][ii];
+				str += bestReforges[ii][jj] * reforgeStats[jj][0][ii] * (1 + stats.statMultiplier);
+				cd += bestReforges[ii][jj] * reforgeStats[jj][1][ii] * (1 + stats.statMultiplier);
+				ac += bestReforges[ii][jj] * reforgeStats[jj][2][ii] * (1 + stats.statMultiplier);
+				def += bestReforges[ii][jj] * reforgeStats[jj][3][ii] * (1 + stats.statMultiplier);
+				hp += bestReforges[ii][jj] * reforgeStats[jj][4][ii] * (1 + stats.statMultiplier);
+				spd += bestReforges[ii][jj] * reforgeStats[jj][5][ii] * (1 + stats.statMultiplier);
+				intel += bestReforges[ii][jj] * reforgeStats[jj][6][ii] * (1 + stats.statMultiplier);
 			}
 		}
 		bestStats = PlayerStats.fromStatsOnly(str, cd, ac, 0, def, hp, intel, 0, 0, spd);
