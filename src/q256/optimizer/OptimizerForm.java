@@ -45,6 +45,10 @@ public class OptimizerForm
 	private JTextField eDef;
 	private JTextField eInt;
 	private JTextField eSpd;
+	private JScrollBar scrollBar2;
+	private JTextArea helpText;
+	private JScrollBar creditsScroll;
+	private JTextArea creditsText;
 
 	public OptimizerForm()
 	{
