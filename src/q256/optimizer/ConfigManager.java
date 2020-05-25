@@ -5,9 +5,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Properties;
 
-/**
- * Created by Willi on 5/23/2020.
- */
 public class ConfigManager
 {
 	public LookAndFeel lookAndFeel;
