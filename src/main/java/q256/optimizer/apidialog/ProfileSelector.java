@@ -58,65 +58,81 @@ public class ProfileSelector extends JDialog
 
 	private void onOK()
 	{
-		if (profiles != null)
+		try
 		{
-			// add your code here
-			String fruit = (String) profileCombo.getSelectedItem();
-			JsonObject profile = Parser.getPlayerProfile(profiles, fruit, uuid);
-			PlayerEquipment p = new PlayerEquipment();
-			int[] talis;
-			PlayerStats baseStats = Parser.baseStats(profile);
-
-			// add nothing
-			p.boots.add(Equipment.NO_BOOTS);
-			p.legs.add(Equipment.NO_LEGS);
-			p.chests.add(Equipment.NO_CHEST);
-			p.helms.add(Equipment.NO_HELM);
-			p.swords.add(Equipment.NO_WEAPON);
-
-			// getting equipment
-			CompoundTag armorNbt = (CompoundTag) Parser
-					.decodeNbt(profile.get("inv_armor").getAsJsonObject().get("data").getAsString());
-			PlayerEquipment armorEquip = Parser
-					.getEquipment((List<CompoundTag>) armorNbt.getValue().get("i").getValue());
-			CompoundTag invNbt = (CompoundTag) Parser
-					.decodeNbt(profile.get("inv_contents").getAsJsonObject().get("data").getAsString());
-			PlayerEquipment invEquip = Parser.getEquipment((List<CompoundTag>) invNbt.getValue().get("i").getValue());
-			CompoundTag echestNbt = (CompoundTag) Parser
-					.decodeNbt(profile.get("ender_chest_contents").getAsJsonObject().get("data").getAsString());
-			PlayerEquipment echestEquip = Parser
-					.getEquipment((List<CompoundTag>) echestNbt.getValue().get("i").getValue());
-
-			p.boots.addAll(armorEquip.boots);
-			p.legs.addAll(armorEquip.legs);
-			p.chests.addAll(armorEquip.chests);
-			p.helms.addAll(armorEquip.helms);
-			p.swords.addAll(armorEquip.swords);
-
-			p.boots.addAll(invEquip.boots);
-			p.legs.addAll(invEquip.legs);
-			p.chests.addAll(invEquip.chests);
-			p.helms.addAll(invEquip.helms);
-			p.swords.addAll(invEquip.swords);
-
-			p.boots.addAll(echestEquip.boots);
-			p.legs.addAll(echestEquip.legs);
-			p.chests.addAll(echestEquip.chests);
-			p.helms.addAll(echestEquip.helms);
-			p.swords.addAll(echestEquip.swords);
-
-			talis = Parser.getTalisInBag(profile);
-			if (talisOutsideOfBag.isSelected())
+			if (profiles != null)
 			{
-				int[] talisArmor = Parser.getTalisInInv((List<CompoundTag>) armorNbt.getValue().get("i").getValue());
-				int[] talisInv = Parser.getTalisInInv((List<CompoundTag>) invNbt.getValue().get("i").getValue());
-				int[] talisEchest = Parser.getTalisInInv((List<CompoundTag>) echestNbt.getValue().get("i").getValue());
-				for (int i = 0; i < talis.length; i++)
+				// add your code here
+				String fruit = (String) profileCombo.getSelectedItem();
+				JsonObject profile = Parser.getPlayerProfile(profiles, fruit, uuid);
+				PlayerEquipment p = new PlayerEquipment();
+				int[] talis;
+				PlayerStats baseStats = Parser.baseStats(profile);
+
+				// add nothing
+				p.boots.add(Equipment.NO_BOOTS);
+				p.legs.add(Equipment.NO_LEGS);
+				p.chests.add(Equipment.NO_CHEST);
+				p.helms.add(Equipment.NO_HELM);
+				p.swords.add(Equipment.NO_WEAPON);
+
+				// getting equipment
+				CompoundTag armorNbt = (CompoundTag) Parser
+						.decodeNbt(profile.get("inv_armor").getAsJsonObject().get("data").getAsString());
+				PlayerEquipment armorEquip = Parser
+						.getEquipment((List<CompoundTag>) armorNbt.getValue().get("i").getValue());
+				CompoundTag invNbt = (CompoundTag) Parser
+						.decodeNbt(profile.get("inv_contents").getAsJsonObject().get("data").getAsString());
+				PlayerEquipment invEquip = Parser
+						.getEquipment((List<CompoundTag>) invNbt.getValue().get("i").getValue());
+				CompoundTag echestNbt = (CompoundTag) Parser
+						.decodeNbt(profile.get("ender_chest_contents").getAsJsonObject().get("data").getAsString());
+				PlayerEquipment echestEquip = Parser
+						.getEquipment((List<CompoundTag>) echestNbt.getValue().get("i").getValue());
+
+				p.boots.addAll(armorEquip.boots);
+				p.legs.addAll(armorEquip.legs);
+				p.chests.addAll(armorEquip.chests);
+				p.helms.addAll(armorEquip.helms);
+				p.swords.addAll(armorEquip.swords);
+
+				p.boots.addAll(invEquip.boots);
+				p.legs.addAll(invEquip.legs);
+				p.chests.addAll(invEquip.chests);
+				p.helms.addAll(invEquip.helms);
+				p.swords.addAll(invEquip.swords);
+
+				p.boots.addAll(echestEquip.boots);
+				p.legs.addAll(echestEquip.legs);
+				p.chests.addAll(echestEquip.chests);
+				p.helms.addAll(echestEquip.helms);
+				p.swords.addAll(echestEquip.swords);
+
+				talis = Parser.getTalisInBag(profile);
+				if (talisOutsideOfBag.isSelected())
 				{
-					talis[i] += talisArmor[i] + talisInv[i] + talisEchest[i];
+					int[] talisArmor = Parser
+							.getTalisInInv((List<CompoundTag>) armorNbt.getValue().get("i").getValue());
+					int[] talisInv = Parser.getTalisInInv((List<CompoundTag>) invNbt.getValue().get("i").getValue());
+					int[] talisEchest = Parser
+							.getTalisInInv((List<CompoundTag>) echestNbt.getValue().get("i").getValue());
+					for (int i = 0; i < talis.length; i++)
+					{
+						talis[i] += talisArmor[i] + talisInv[i] + talisEchest[i];
+					}
 				}
+				callback.callback(baseStats, p, talis);
 			}
-			callback.callback(baseStats, p, talis);
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+			ApiImportError next = new ApiImportError();
+			next.setError(e);
+			next.pack();
+			next.setLocationRelativeTo(null);
+			dispose();
+			next.setVisible(true);
+			return;
 		}
 		dispose();
 	}

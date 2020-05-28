@@ -249,6 +249,8 @@ public class Parser
 		int lvl = 0;
 		while (xp > 0)
 		{
+			if (lvl == 50)
+				return lvl;
 			xp -= skillXpTable[lvl];
 			lvl++;
 		}

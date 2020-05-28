@@ -78,7 +78,7 @@ public class OptimizerForm
 	private PlayerStats baseStats;
 	private PlayerEquipment equipment;
 	private SpinnerNumberModel[] talisModel;
-	private boolean pauseRefresh = false;
+	private boolean pauseRefresh = true;
 
 	public OptimizerForm()
 	{
@@ -188,6 +188,14 @@ public class OptimizerForm
 		cd.addChangeListener((e) -> refreshBaseStats(false));
 		ats.addChangeListener((e) -> refreshBaseStats(false));
 
+		// add some empty equipment
+		bootsCombo.addItem(Equipment.NO_BOOTS);
+		legsCombo.addItem(Equipment.NO_LEGS);
+		chestCombo.addItem(Equipment.NO_CHEST);
+		helmCombo.addItem(Equipment.NO_HELM);
+		weaponCombo.addItem(Equipment.NO_WEAPON);
+
+		pauseRefresh = false;
 	}
 
 	public static void main(String[] args)
