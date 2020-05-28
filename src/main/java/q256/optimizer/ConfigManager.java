@@ -62,6 +62,30 @@ public class ConfigManager
 		}
 	}
 
+	public void writeToConfigFile(String config)
+	{
+		Properties properties = new Properties();
+		if (apiKey != null)
+			properties.put("apikey", apiKey);
+		if (lookAndFeel != null)
+		{
+			switch (lookAndFeel)
+			{
+			case NORMAL:
+				properties.putIfAbsent("lookandfeel", "default");
+				break;
+			case METAL:
+				properties.putIfAbsent("lookandfeel", "metal");
+				break;
+			case SYSTEM:
+				properties.putIfAbsent("lookandfeel", "system");
+				break;
+			}
+		}
+
+		createConfigFile(properties, config);
+	}
+
 	enum LookAndFeel
 	{
 		NORMAL, SYSTEM, METAL,

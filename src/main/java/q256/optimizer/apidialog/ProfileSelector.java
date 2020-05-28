@@ -123,8 +123,12 @@ public class ProfileSelector extends JDialog
 
 	private void onCancel()
 	{
-		// add your code here if necessary
+		APINameInput next = new APINameInput();
+		next.setCallback(callback);
+		next.pack();
+		next.setLocationRelativeTo(null);
 		dispose();
+		next.setVisible(true);
 	}
 
 	public void grabProfiles()

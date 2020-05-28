@@ -304,7 +304,8 @@ public class Parser
 		str += statsFromLvl(lvlFromXp(profile.get("experience_skill_foraging").getAsDouble()), "foraging");
 		intel += statsFromLvl(lvlFromXp(profile.get("experience_skill_enchanting").getAsDouble()), "enchanting");
 		intel += statsFromLvl(lvlFromXp(profile.get("experience_skill_alchemy").getAsDouble()), "alchemy");
-		pl += statsFromLvl(lvlFromXp(profile.get("experience_skill_taming").getAsDouble()), "taming");
+		if (profile.has("experience_skill_taming"))
+			pl += statsFromLvl(lvlFromXp(profile.get("experience_skill_taming").getAsDouble()), "taming");
 
 		JsonObject rev = profile.get("slayer_bosses").getAsJsonObject().get("zombie").getAsJsonObject()
 								.get("claimed_levels").getAsJsonObject();

@@ -1,6 +1,7 @@
 package q256.optimizer;
 
 import q256.optimizer.api.APIReader;
+import q256.optimizer.apidialog.APIKeyInput;
 import q256.optimizer.apidialog.APINameInput;
 import q256.optimizer.calculators.Calculator;
 import q256.optimizer.calculators.Q256Calculator;
@@ -127,6 +128,14 @@ public class OptimizerForm
 		});
 		importButton.addActionListener(e ->
 		{
+			if (configManager.apiKey.equals("none"))
+			{
+				APIKeyInput keyInput = new APIKeyInput();
+				keyInput.setCallback(this::setApiKey);
+				keyInput.pack();
+				keyInput.setLocationRelativeTo(null);
+				keyInput.setVisible(true);
+			}
 			APINameInput next = new APINameInput();
 			next.setCallback(this::apiCallback);
 			next.pack();
@@ -369,5 +378,12 @@ public class OptimizerForm
 		if (value instanceof Double)
 			return (double) value;
 		return 0;
+	}
+
+	public void setApiKey(String key)
+	{
+		configManager.apiKey = key;
+		APIReader.initialize(configManager.apiKey);
+		configManager.writeToConfigFile("config.cfg");
 	}
 }
