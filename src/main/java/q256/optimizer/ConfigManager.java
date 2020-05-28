@@ -8,6 +8,7 @@ import java.util.Properties;
 public class ConfigManager
 {
 	public LookAndFeel lookAndFeel;
+	public String apiKey;
 
 	public ConfigManager()
 	{
@@ -28,6 +29,10 @@ public class ConfigManager
 			createConfigFile(properties, config);
 		}
 
+		// make sure nothing's missing
+		if (properties.keySet().size() != 2)
+			createConfigFile(properties, config);
+
 		// grab the look and feel we want
 		String lnf = properties.getProperty("lookandfeel", "default");
 		if (lnf.toLowerCase().equals("system"))
@@ -36,12 +41,16 @@ public class ConfigManager
 			lookAndFeel = LookAndFeel.METAL;
 		else
 			lookAndFeel = LookAndFeel.NORMAL;
+
+		// grab the api key
+		apiKey = properties.getProperty("apikey", "none");
 	}
 
 	private void createConfigFile(Properties properties, String config)
 	{
 		// initialize config properties here
-		properties.setProperty("lookandfeel", "default");
+		properties.putIfAbsent("lookandfeel", "default");
+		properties.putIfAbsent("apikey", "none");
 
 		try (FileWriter propWriter = new FileWriter(config))
 		{
