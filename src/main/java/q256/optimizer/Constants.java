@@ -7,7 +7,7 @@ import java.awt.*;
  */
 public class Constants
 {
-	public static String version = "v3.2-SNAPSHOT";
+	public static String version = "v4.0-SNAPSHOT";
 	public static String[] rarityNames = { "Common", "Uncommon", "Rare", "Epic", "Legendary", "Mythic" };
 	public static String[] reforgeNames = { "Forceful", "Superior", "Strong", "Itchy", "Hurtful", "Strange" };
 	public static Color[] rarityColors = { Color.gray, new Color(0, 206, 55), Color.blue, new Color(150, 0, 200), Color.orange,

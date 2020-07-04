@@ -6,7 +6,7 @@
 
     <groupId>q256.optimizer</groupId>
     <artifactId>q256Optimizer</artifactId>
-    <version>3.2-SNAPSHOT</version>
+    <version>4.0-SNAPSHOT</version>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
