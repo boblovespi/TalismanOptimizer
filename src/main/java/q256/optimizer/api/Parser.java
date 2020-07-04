@@ -73,6 +73,7 @@ public class Parser
 	public static int[] getTalisInInv(List<CompoundTag> list)
 	{
 		int[] talisCount = new int[6];
+		System.out.println(list);
 		for (CompoundTag tag : list)
 		{
 			if (!getType(tag).equals("Talisman"))
@@ -127,7 +128,8 @@ public class Parser
 		String name = (String) tag2.getValue().get("Name").getValue();
 		if (name.contains("Backpack"))
 			return "Backpack";
-
+		if (tag2.getValue().get("Lore")==null)
+			return "None";
 		List<Tag<String>> stats = (List<Tag<String>>) tag2.getValue().get("Lore").getValue();
 
 		String rarity = stats.get(stats.size() - 1).getValue();
@@ -142,7 +144,7 @@ public class Parser
 			return "Leggings";
 		else if (rarity.contains("BOOTS") || rarity.contains("OXFORDS"))
 			return "Boots";
-		else if (rarity.contains("ACCESSORY"))
+		else if (rarity.contains("ACCESSORY") || rarity.contains("HATCCESSORY"))
 			return "Talisman";
 		return "None";
 	}
@@ -377,6 +379,7 @@ public class Parser
 
 	public static PlayerEquipment getEquipment(List<CompoundTag> inv)
 	{
+		System.out.println(inv);
 		PlayerEquipment p = new PlayerEquipment();
 		for (CompoundTag tag : inv)
 		{
