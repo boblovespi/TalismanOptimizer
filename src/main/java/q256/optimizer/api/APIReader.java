@@ -101,4 +101,28 @@ public class APIReader
 	{
 		return get("skyblock/profiles", "uuid", uuid);
 	}
+
+	public CompletableFuture<JsonObject> profilesSkyLea(String username)
+	{
+		CompletableFuture<JsonObject> result = new CompletableFuture<>();
+		StringBuilder builder = new StringBuilder("https://sky.lea.moe/api/v2/profile/");
+		builder.append(username);
+
+		manager.submit(() ->
+		{
+			try
+			{
+				URL mojangUrl = new URL(builder.toString());
+				BufferedReader in = new BufferedReader(new InputStreamReader(mojangUrl.openStream()));
+				String json = in.readLine();
+				result.complete(gson.fromJson(json, JsonObject.class));
+
+			} catch (Exception e)
+			{
+				e.printStackTrace();
+				result.completeExceptionally(e);
+			}
+		});
+		return result;
+	}
 }

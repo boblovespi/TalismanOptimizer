@@ -11,12 +11,10 @@ import q256.optimizer.PlayerStats;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.util.Base64;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /**
  * Created by Willi on 5/25/2020.
@@ -50,9 +48,35 @@ public class Parser
 		return null;
 	}
 
+	public static JsonObject getPlayerProfileSkyLea(JsonObject profile, String fruit)
+	{
+		List<JsonElement> profiles = profile.get("profiles").getAsJsonObject().entrySet().stream().map(
+				Map.Entry::getValue).collect(
+				Collectors.toList());
+		for (JsonElement prof : profiles)
+		{
+			if (prof.getAsJsonObject().get("cute_name").getAsString().equals(fruit))
+				return prof.getAsJsonObject().get("raw").getAsJsonObject();
+		}
+		return null;
+	}
+
 	public static String[] getFruits(JsonObject profile)
 	{
 		JsonArray profiles = profile.get("profiles").getAsJsonArray();
+		String[] fruits = new String[profiles.size()];
+		for (int i = 0; i < profiles.size(); ++i)
+		{
+			fruits[i] = profiles.get(i).getAsJsonObject().get("cute_name").getAsString();
+		}
+		return fruits;
+	}
+
+	public static String[] getFruitsFromSkyLea(JsonObject profile)
+	{
+		List<JsonElement> profiles = profile.get("profiles").getAsJsonObject().entrySet().stream().map(
+				Map.Entry::getValue).collect(
+				Collectors.toList());
 		String[] fruits = new String[profiles.size()];
 		for (int i = 0; i < profiles.size(); ++i)
 		{

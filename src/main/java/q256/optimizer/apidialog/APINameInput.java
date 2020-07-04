@@ -5,14 +5,16 @@ import java.awt.event.*;
 
 public class APINameInput extends JDialog
 {
+	private boolean useSkyLea;
 	private JPanel contentPane;
 	private JButton buttonOK;
 	private JButton buttonCancel;
 	private JTextField username;
 	private ApiCallback callback;
 
-	public APINameInput()
+	public APINameInput(boolean useSkyLea)
 	{
+		this.useSkyLea = useSkyLea;
 		setContentPane(contentPane);
 		setModal(true);
 		getRootPane().setDefaultButton(buttonOK);
@@ -32,7 +34,8 @@ public class APINameInput extends JDialog
 		});
 
 		// call onCancel() on ESCAPE
-		contentPane.registerKeyboardAction(e -> onCancel(), KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+		contentPane.registerKeyboardAction(e -> onCancel(), KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0),
+				JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
 	}
 
 	private void onOK()
@@ -40,8 +43,12 @@ public class APINameInput extends JDialog
 		// add your code here
 		ProfileSelector next = new ProfileSelector();
 		next.username = username.getText();
+		next.useSkyLea = useSkyLea;
 		next.setCallback(callback);
-		next.grabProfiles();
+		if (!useSkyLea)
+			next.grabProfiles();
+		else
+			next.grabFromSkyLea();
 		next.pack();
 		next.setLocationRelativeTo(null);
 		dispose();

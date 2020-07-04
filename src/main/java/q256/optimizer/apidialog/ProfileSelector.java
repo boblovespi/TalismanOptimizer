@@ -18,6 +18,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class ProfileSelector extends JDialog
 {
+	public boolean useSkyLea = false;
 	public String username;
 	private JPanel contentPane;
 	private JButton buttonOK;
@@ -64,7 +65,11 @@ public class ProfileSelector extends JDialog
 			{
 				// add your code here
 				String fruit = (String) profileCombo.getSelectedItem();
-				JsonObject profile = Parser.getPlayerProfile(profiles, fruit, uuid);
+				JsonObject profile;
+				if (!useSkyLea)
+					profile = Parser.getPlayerProfile(profiles, fruit, uuid);
+				else
+					profile = Parser.getPlayerProfileSkyLea(profiles, fruit);
 				PlayerEquipment p = new PlayerEquipment();
 				int[] talis;
 				PlayerStats baseStats = Parser.baseStats(profile);
@@ -139,7 +144,7 @@ public class ProfileSelector extends JDialog
 
 	private void onCancel()
 	{
-		APINameInput next = new APINameInput();
+		APINameInput next = new APINameInput(false);
 		next.setCallback(callback);
 		next.pack();
 		next.setLocationRelativeTo(null);
@@ -150,8 +155,7 @@ public class ProfileSelector extends JDialog
 	public void grabProfiles()
 	{
 		CompletableFuture<String> uuid = APIReader.API.nameToUUID(username);
-		uuid.whenComplete((u, e) ->
-		{
+		uuid.whenComplete((u, e) -> {
 			if (e != null)
 			{
 				SwingUtilities.invokeLater(() -> loading.setText("There was an exception in grabbing profile data!"));
@@ -159,8 +163,7 @@ public class ProfileSelector extends JDialog
 			}
 			System.out.println(u);
 			CompletableFuture<JsonObject> profiles = APIReader.API.profilesData(u);
-			profiles.whenComplete((u1, e1) ->
-			{
+			profiles.whenComplete((u1, e1) -> {
 				if (e1 != null)
 				{
 					SwingUtilities
@@ -171,14 +174,34 @@ public class ProfileSelector extends JDialog
 				System.out.println(Arrays.toString(fruits));
 				this.profiles = u1;
 				this.uuid = u;
-				SwingUtilities.invokeLater(() ->
-				{
+				SwingUtilities.invokeLater(() -> {
 					for (String fruit : fruits)
 					{
 						profileCombo.addItem(fruit);
 					}
 					loading.setText("Choose profile");
 				});
+			});
+		});
+	}
+
+	public void grabFromSkyLea()
+	{
+		CompletableFuture<JsonObject> profiles = APIReader.API.profilesSkyLea(username);
+		profiles.whenComplete((u, e) -> {
+			if (e != null)
+			{
+				SwingUtilities.invokeLater(() -> loading.setText("There was an exception in grabbing profile data!"));
+				return;
+			}
+			String[] fruits = Parser.getFruitsFromSkyLea(u);
+			this.profiles = u;
+			SwingUtilities.invokeLater(() -> {
+				for (String fruit : fruits)
+				{
+					profileCombo.addItem(fruit);
+				}
+				loading.setText("Choose profile");
 			});
 		});
 	}

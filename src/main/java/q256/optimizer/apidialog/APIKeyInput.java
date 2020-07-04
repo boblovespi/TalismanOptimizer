@@ -13,6 +13,7 @@ public class APIKeyInput extends JDialog
 	private JButton buttonCancel;
 	private JTextField apiKey;
 	private Consumer<String> callback;
+	public boolean success = false;
 
 	public APIKeyInput()
 	{
@@ -47,6 +48,7 @@ public class APIKeyInput extends JDialog
 	private void onOK()
 	{
 		callback.accept(apiKey.getText());
+		success = true;
 		// add your code here
 		dispose();
 	}

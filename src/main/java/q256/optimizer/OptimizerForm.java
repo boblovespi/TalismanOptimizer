@@ -75,6 +75,7 @@ public class OptimizerForm
 	private JComboBox<Equipment> chestCombo;
 	private JComboBox<Equipment> legsCombo;
 	private JComboBox<Equipment> bootsCombo;
+	private JButton skyLeaButton;
 	private PlayerStats baseStats;
 	private PlayerEquipment equipment;
 	private SpinnerNumberModel[] talisModel;
@@ -111,8 +112,7 @@ public class OptimizerForm
 		});
 
 		// listener for the button (maybe allow the button to cancel a calculation if one is running?)
-		calculateButton.addActionListener(e ->
-		{
+		calculateButton.addActionListener(e -> {
 			if (calcThread != null)
 				return;
 			double statMult = cast(statBoost.getValue()) / 100d;
@@ -126,8 +126,7 @@ public class OptimizerForm
 			calcThread.onFinish(this::displayStats);
 			calcThread.run();
 		});
-		importButton.addActionListener(e ->
-		{
+		importButton.addActionListener(e -> {
 			if (configManager.apiKey.equals("none"))
 			{
 				APIKeyInput keyInput = new APIKeyInput();
@@ -135,8 +134,17 @@ public class OptimizerForm
 				keyInput.pack();
 				keyInput.setLocationRelativeTo(null);
 				keyInput.setVisible(true);
+				if (!keyInput.success)
+					return;
 			}
-			APINameInput next = new APINameInput();
+			APINameInput next = new APINameInput(false);
+			next.setCallback(this::apiCallback);
+			next.pack();
+			next.setLocationRelativeTo(null);
+			next.setVisible(true);
+		});
+		skyLeaButton.addActionListener(e -> {
+			APINameInput next = new APINameInput(true);
 			next.setCallback(this::apiCallback);
 			next.pack();
 			next.setLocationRelativeTo(null);
