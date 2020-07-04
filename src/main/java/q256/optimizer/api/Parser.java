@@ -213,7 +213,7 @@ public class Parser
 			{
 				Matcher matcher = strPat.matcher(line);
 				cc = getStatFromMatcher(matcher);
-			} else if (line.contains("7Attack Speed:"))
+			} else if (line.contains("7Bonus Attack Speed:"))
 			{
 				Matcher matcher = strPat.matcher(line);
 				ats = getStatFromMatcher(matcher);
@@ -271,7 +271,7 @@ public class Parser
 			bonus = Math.min(lvl, 14) + Math.max(0, lvl - 14) * 2;
 		} else if (skill.equals("combat"))
 		{
-			bonus = lvl;
+			bonus = lvl*0.5;
 		} else if (skill.equals("foraging"))
 		{
 			bonus = Math.min(lvl, 14) + Math.max(0, lvl - 14) * 2;
