@@ -2,10 +2,12 @@ package q256.optimizer.api;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import q256.optimizer.Constants;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.net.URLConnection;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -46,8 +48,7 @@ public class APIReader
 	{
 		CompletableFuture<String> result = new CompletableFuture<>();
 		String mojangApi = "https://api.mojang.com/users/profiles/minecraft/" + name;
-		manager.submit(() ->
-		{
+		manager.submit(() -> {
 			try
 			{
 				URL mojangUrl = new URL(mojangApi);
@@ -79,8 +80,7 @@ public class APIReader
 			builder.append("&").append(params[i * 2]).append("=").append(params[i * 2 + 1]);
 		}
 
-		manager.submit(() ->
-		{
+		manager.submit(() -> {
 			try
 			{
 				URL mojangUrl = new URL(builder.toString());
@@ -108,12 +108,15 @@ public class APIReader
 		StringBuilder builder = new StringBuilder("https://sky.lea.moe/api/v2/profile/");
 		builder.append(username);
 
-		manager.submit(() ->
-		{
+		manager.submit(() -> {
 			try
 			{
 				URL mojangUrl = new URL(builder.toString());
-				BufferedReader in = new BufferedReader(new InputStreamReader(mojangUrl.openStream()));
+				URLConnection connection = mojangUrl.openConnection();
+				connection.setRequestProperty(
+						"User-Agent",
+						"q256-optimizer/" + Constants.version + " (https://github.com/boblovespi/TalismanOptimizer)");
+				BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 				String json = in.readLine();
 				result.complete(gson.fromJson(json, JsonObject.class));
 
