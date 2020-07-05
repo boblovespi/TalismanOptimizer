@@ -187,7 +187,7 @@ public class ProfileSelector extends JDialog
 
 	public void grabFromSkyLea()
 	{
-		CompletableFuture<JsonObject> profiles = APIReader.API.profilesSkyLea(username);
+		CompletableFuture<JsonObject> profiles = APIReader.SKY_LEA.profilesSkyLea(username);
 		profiles.whenComplete((u, e) -> {
 			if (e != null)
 			{

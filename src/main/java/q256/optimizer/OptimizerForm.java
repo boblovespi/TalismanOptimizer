@@ -215,6 +215,7 @@ public class OptimizerForm
 
 		// init the api
 		APIReader.initialize(configManager.apiKey);
+		APIReader.initializeSkyLea();
 
 		// init reforge stats
 		Constants.initReforgeStats();

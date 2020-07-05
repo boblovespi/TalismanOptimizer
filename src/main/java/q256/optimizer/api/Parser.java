@@ -97,7 +97,6 @@ public class Parser
 	public static int[] getTalisInInv(List<CompoundTag> list)
 	{
 		int[] talisCount = new int[6];
-		System.out.println(list);
 		for (CompoundTag tag : list)
 		{
 			if (!getType(tag).equals("Talisman"))
@@ -403,7 +402,6 @@ public class Parser
 
 	public static PlayerEquipment getEquipment(List<CompoundTag> inv)
 	{
-		System.out.println(inv);
 		PlayerEquipment p = new PlayerEquipment();
 		for (CompoundTag tag : inv)
 		{

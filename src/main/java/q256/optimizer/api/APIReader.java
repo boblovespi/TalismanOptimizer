@@ -18,6 +18,7 @@ import java.util.concurrent.Executors;
 public class APIReader
 {
 	public static APIReader API;
+	public static APIReader SKY_LEA;
 
 	private String apiKey;
 	private ExecutorService manager;
@@ -37,6 +38,11 @@ public class APIReader
 		if (API != null)
 			API.kill();
 		API = new APIReader(apiKey);
+	}
+
+	public static void initializeSkyLea()
+	{
+		SKY_LEA = new APIReader("");
 	}
 
 	public void kill()
